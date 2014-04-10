@@ -50,6 +50,23 @@ define(function () {
     }
 
 
+
+    Packets.userDetails = function (_name, _valid) {
+        Packets.packet.call(this);
+        this.type = "userDetails";
+        this.name = _name;
+        this.valid = _valid;
+    }
+
+    Packets.userDetails.prototype = Object.create(Packets.packet.prototype);
+
+    Packets.userDetails.prototype.processPacket = function (_handler) {
+        _handler.handleUserDetails(this);
+    }
+
+
+
+
     return Packets;
 
 

@@ -28,8 +28,20 @@ define(['os/handlers','os/net/packets'], function (Handlers,Packets) {
         console.log("NetHandler.Connect.handleConnect");
         console.log("Sending game info to " + packet.name);
 
-        this.send(new Packets.updatePositionPacket(Math.random(), Math.random()));
+        var x = Math.random() * 900;
+        var y = Math.random() * 600;
+        var user = {
+            name: packet.name,
+            id: 0,
+            x: x,
+            y: y,
+            x2: x + Math.random() * 2 - 1,
+            y2: y + Math.random() * 2 - 1,
+            mass: 5 + Math.random() * 10,
+            radius: 10 + Math.random() * 5
+        };
 
+        this.send(new Packets.userDetails(packet.name, user));
         this.emit('connected');
 
     };

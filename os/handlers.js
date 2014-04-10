@@ -39,8 +39,12 @@ define(['os/net/packets'],function(Packets) {
             this.unexpectedHandle("handleLogin");
         },
 
+        handleUserDetails: function(packet) {
+            this.unexpectedHandle("handleUserDetails");
+        },
+
         readPacket: function (packet) {
-            console.log(packet);
+            
             var packetInstance = new Packets[packet.type];
 
             for (var prop in packet)

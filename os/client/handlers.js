@@ -18,6 +18,12 @@ define(['os/handlers', 'os/net/packets', 'libs/EventEmitter'], function (Handler
         console.log("Client.handleUpdatePosition");
     };
 
+    ClientHandlers.client.prototype.handleUserDetails = function (packet) {
+        
+        this.emit('new-connection', packet.valid);
+
+    };
+
     return ClientHandlers;
 
 });
